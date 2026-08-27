@@ -4,10 +4,56 @@
       "id": "drush-into-scouts",
       "file": "builds/drush-into-scouts.json",
       "name": "Drush into Fast Feudal Scouts",
-      "civs": ["Generic"],
+      "civs": [
+        "Generic"
+      ],
       "difficulty": "Intermediate",
       "uptime": "20 pop",
-      "summary": "Dark Age Militia rush that transitions straight into Feudal Scouts for constant map pressure."
+      "summary": "Click up at 20 population, harass with 2 Militia, transition into Feudal Scouts."
+    },
+    {
+      "id": "fast-castle-knights",
+      "file": "builds/fast-castle-knights.json",
+      "name": "Fast Castle into Knights",
+      "civs": [
+        "Generic"
+      ],
+      "difficulty": "Intermediate",
+      "uptime": "25 pop",
+      "summary": "Click up at 25 population, reach Castle around 15:00 with a Stable already running Knights."
+    },
+    {
+      "id": "fast-imperial-turks",
+      "file": "builds/fast-imperial-turks.json",
+      "name": "Fast Imperial into Hand Cannoneers",
+      "civs": [
+        "Turks"
+      ],
+      "difficulty": "Advanced",
+      "uptime": "24 pop",
+      "summary": "Click up at 24 population and reach Imperial around 18:00 with Hand Cannoneers and Bombard Cannons ready."
+    },
+    {
+      "id": "fast-feudal-scouts",
+      "file": "builds/fast-feudal-scouts.json",
+      "name": "Fast Feudal into Scouts",
+      "civs": [
+        "Generic"
+      ],
+      "difficulty": "Beginner",
+      "uptime": "19 pop",
+      "summary": "Click up at 19 population for the earliest realistic Feudal pressure, or to defend an incoming rush."
+    },
+    {
+      "id": "maa-into-archers",
+      "file": "builds/maa-into-archers.json",
+      "name": "Man-at-Arms into Archers",
+      "civs": [
+        "Generic"
+      ],
+      "difficulty": "Intermediate",
+      "uptime": "20 pop",
+      "summary": "Click up at 20 population with a Barracks already placed, pressure with Man-at-Arms, then mass Archers into Castle."
     }
   ]
 }

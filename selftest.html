@@ -2,7 +2,7 @@
 <body><pre id="out">running</pre>
 <script type="module">
 import { GameClock } from './js/timer.js';
-import { loadBuild, formatClock, formatDrift, villagersAt, stepIndexAt, parseClock } from './js/data.js';
+import { loadBuild, loadManifest, prepareBuild, formatClock, formatDrift, villagersAt, stepIndexAt, parseClock } from './js/data.js';
 const lines = []; let fails = 0;
 const ok = (name, cond, extra='') => { lines.push(`${cond?'PASS':'FAIL'}  ${name}${extra?'  '+extra:''}`); if(!cond) fails++; };
 const near = (a,b,tol=0.08) => Math.abs(a-b) <= tol;
@@ -46,31 +46,67 @@ ok('drift ahead', formatDrift(-30) === '30s ahead', formatDrift(-30));
 ok('drift on time', formatDrift(1) === 'on time');
 ok('drift over a minute', formatDrift(95) === '1m 35s behind', formatDrift(95));
 
-// --- build + timeline ----------------------------------------------------
-const b = await loadBuild('drush-into-scouts');
-ok('28 steps loaded', b.steps.length === 28, `${b.steps.length}`);
-ok('build ends 9:15', formatClock(b.duration) === '9:15', formatClock(b.duration));
-ok('first step at 0:00 with 3 vills', b.steps[0].time === 0 && b.steps[0].vills === 3);
-ok('first step label is a range', b.steps[0].label === 'Villagers 1–3', b.steps[0].label);
-const clickUp = b.steps.find(s => s.build === 'Click up');
-ok('click up at 6:45 with 19 vills', formatClock(clickUp.time) === '6:45' && clickUp.vills === 19, `${formatClock(clickUp.time)} / ${clickUp.vills}`);
-const feudal = b.steps.find(s => s.build === 'Loom');
-ok('feudal 130s after click up', feudal.time - clickUp.time === 130, `${feudal.time - clickUp.time}s`);
-ok('every alloc sums to its vill count', b.steps.every(s => Object.values(s.alloc).reduce((a,x)=>a+x,0) === s.vills));
-ok('timeline is monotonic', b.steps.every((s,i) => i===0 || s.time >= b.steps[i-1].time));
-ok('stepIndexAt(0) = 0', stepIndexAt(b.steps, 0) === 0);
-ok('stepIndexAt before a step does not include it', b.steps[stepIndexAt(b.steps, 274)].time <= 274);
-ok('stepIndexAt(275) lands on the Barracks', b.steps[stepIndexAt(b.steps, 275)].build === 'Barracks');
-ok('stepIndexAt past the end clamps', stepIndexAt(b.steps, 99999) === b.steps.length - 1);
+// --- every build in the manifest ----------------------------------------
+const manifest = await loadManifest();
+ok('manifest lists 5 builds', manifest.length === 5, `${manifest.length}`);
+const loaded = {};
+for (const entry of manifest) {
+  try {
+    const b = await loadBuild(entry.id);
+    loaded[entry.id] = b;
+    // loadBuild throws on any invariant breach, so reaching here is the check
+    ok(`${entry.id}: validates`, true, `${b.steps.length} steps, ends ${formatClock(b.duration)}`);
+    ok(`${entry.id}: allocations sum to villager counts`,
+       b.steps.every(s => Object.values(s.alloc).reduce((a,x)=>a+x,0) === s.vills));
+    ok(`${entry.id}: timeline is monotonic`,
+       b.steps.every((s,i) => i === 0 || s.time >= b.steps[i-1].time));
+    ok(`${entry.id}: every step has a phase and an action`,
+       b.steps.every(s => s.phase && s.action));
+  } catch (e) {
+    ok(`${entry.id}: validates`, false, e.message.split('\n').slice(0,2).join(' '));
+  }
+}
 
-// a bad build must be rejected, not silently rendered
-const { prepareBuild } = await import('./js/data.js');
-ok('rejects bad allocation', (() => { try {
-  prepareBuild({ id:'x', steps:[{ vill:4, action:'a', alloc:{food:99} }] }); return false;
-} catch(e) { return /allocation totals 99/.test(e.message); } })());
-ok('rejects backwards timeline', (() => { try {
-  prepareBuild({ id:'x', steps:[{ time:'5:00', vills:1, action:'a', alloc:{food:1} },{ time:'1:00', vills:1, action:'b', alloc:{food:1} }] }); return false;
-} catch(e) { return /backwards in time/.test(e.message); } })());
+// --- drush timeline ------------------------------------------------------
+const b = loaded['drush-into-scouts'];
+ok('drush: 28 steps', b.steps.length === 28, `${b.steps.length}`);
+ok('drush: first step at 0:00 with 3 vills', b.steps[0].time === 0 && b.steps[0].vills === 3);
+ok('drush: first step label is a range', b.steps[0].label === 'Villagers 1–3', b.steps[0].label);
+ok('drush: clicks up at 6:45 with 19 vills',
+   formatClock(b.ages.clicks.feudal) === '6:45' && villagersAt(b.ages.clicks.feudal) === 19, formatClock(b.ages.clicks.feudal));
+ok('drush: Feudal arrives 130s after the click', b.ages.arrivals.feudal - b.ages.clicks.feudal === 130);
+ok('drush: stepIndexAt(275) lands on the Barracks', b.steps[stepIndexAt(b.steps, 275)].build === 'Barracks');
+ok('drush: stepIndexAt past the end clamps', stepIndexAt(b.steps, 99999) === b.steps.length - 1);
+
+// --- multi-age derivation, checked against the sources' own figures ------
+const fi = loaded['fast-imperial-turks'];
+ok('fast imp: Castle click 12:27 (video states 12:27)', formatClock(fi.ages.clicks.castle) === '12:27', formatClock(fi.ages.clicks.castle));
+ok('fast imp: Imperial arrives 18:17 (video states ~18:00)', formatClock(fi.ages.arrivals.imperial) === '18:17', formatClock(fi.ages.arrivals.imperial));
+ok('fast imp: Castle research is 160s', fi.ages.arrivals.castle - fi.ages.clicks.castle === 160);
+ok('fast imp: Imperial research is 190s', fi.ages.arrivals.imperial - fi.ages.clicks.imperial === 190);
+ok('fast imp: clicks Feudal with 23 vills', fi.steps.find(s => s.build === 'Click up').vills === 23);
+const fc = loaded['fast-castle-knights'];
+ok('fast castle: clicks Feudal with 24 vills', fc.steps.find(s => s.build === 'Click up').vills === 24);
+ok('fast castle: 26 vills on arrival in Feudal',
+   fc.steps.find(s => s.age === 'feudal' && s.offset == null).vills === 26);
+ok('fast castle: Castle click is after Feudal arrival', fc.ages.clicks.castle > fc.ages.arrivals.feudal);
+
+// --- validator rejects bad builds ---------------------------------------
+const bad = (build, re) => { try { prepareBuild(build); return false; } catch (e) { return re.test(e.message); } };
+ok('rejects bad allocation',
+   bad({ id:'x', steps:[{ vill:4, action:'a', alloc:{food:99} }] }, /allocation totals 99/));
+ok('rejects backwards timeline',
+   bad({ id:'x', steps:[{ time:'5:00', vills:1, action:'a', alloc:{food:1} },{ time:'1:00', vills:1, action:'b', alloc:{food:1} }] }, /backwards in time/));
+ok('rejects a post-click step with no explicit vills',
+   bad({ id:'x', ages:[{ age:'feudal', at:{ vill:10 } }],
+         steps:[{ vill:10, action:'click', alloc:{food:10} },
+                { age:'feudal', action:'later', alloc:{food:10} }] }, /needs an explicit "vills"/));
+const oneStep = [{ vill:4, action:'a', alloc:{ food:4 } }];
+ok('rejects an unknown age', bad({ id:'x', ages:[{ age:'bronze', at:{ vill:4 } }], steps:oneStep }, /Unknown age/));
+ok('rejects an age referenced before it is declared',
+   bad({ id:'x', ages:[{ age:'castle', at:{ age:'feudal' } }], steps:oneStep }, /not declared before it/));
+ok('rejects an unknown phase',
+   bad({ id:'x', steps:[{ vill:4, phase:'stone-age', action:'a', alloc:{food:4} }] }, /unknown phase/));
 
 // --- follow state (auto vs manual) ---------------------------------------
 const { FollowState } = await import('./js/follow.js');

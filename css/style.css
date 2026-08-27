@@ -82,9 +82,11 @@ a:hover { text-decoration: underline; }
 .chip-builder .chip-value { color: var(--builder); }
 
 .phase { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
-.phase-dark { background: #2b2419; color: #c9b189; }
-.phase-uptime { background: #2b2029; color: #d2a3c4; }
-.phase-feudal { background: #1e2a22; color: #8fc9a3; }
+.phase.phase-dark { background: #2b2419; color: #c9b189; }
+.phase.phase-uptime-feudal, .phase.phase-uptime-castle, .phase.phase-uptime-imperial { background: #2b2029; color: #d2a3c4; }
+.phase.phase-feudal { background: #1e2a22; color: #8fc9a3; }
+.phase.phase-castle { background: #1c2632; color: #8fb4d9; }
+.phase.phase-imperial { background: #2f2318; color: #e0a86a; }
 
 /* ---------- build (read) view ---------- */
 .build-head { padding: 12px 0 28px; }
@@ -183,3 +185,9 @@ a:hover { text-decoration: underline; }
   .btn, .callout, .site-footer { display: none; }
   .steps td, .steps th { border-color: #ccc; }
 }
+
+.civ-tips { margin-top: 40px; }
+.civ-tips h2 { font-size: 1.1rem; }
+.civ-tips ul { padding-left: 20px; color: var(--text-dim); }
+.civ-tips li { margin-bottom: 8px; }
+.civ-tips strong { color: var(--text); }

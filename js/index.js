@@ -1,5 +1,5 @@
 import { loadManifest } from './data.js';
-import { el, showError } from './ui.js';
+import { el, mount, showError } from './ui.js';
 
 const app = document.getElementById('app');
 
@@ -23,7 +23,7 @@ function card(build) {
 
 try {
   const builds = await loadManifest();
-  app.replaceChildren(
+  mount(app, 
     builds.length
       ? el('div', { class: 'card-grid' }, builds.map(card))
       : el('p', { class: 'empty', text: 'No builds yet.' }),

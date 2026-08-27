@@ -1,0 +1,541 @@
+{
+  "id": "maa-into-archers",
+  "name": "Man-at-Arms into Archers",
+  "civs": [
+    "Generic"
+  ],
+  "difficulty": "Intermediate",
+  "goal": "Click up at 20 population with a Barracks already placed, pressure with Man-at-Arms, then mass Archers into Castle.",
+  "source": "Sitaux — \"TUTORIAL: THE BEST MAN AT ARMS BUILD ORDER AT ANY LEVEL\"",
+  "notes": [
+    "Times are the ideal timeline with zero Town Centre idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
+    "No deer pushing required, which makes it reliable on open maps like Arabia.",
+    "On maps with chickens or shore fish instead of berries, take those first with villagers 13–16 and move to berries later.",
+    "Villager allocations after the first age-up click are author estimates built from the video's stated targets. The video stops giving a per-villager script at that point."
+  ],
+  "ages": [
+    {
+      "age": "feudal",
+      "at": {
+        "vill": 19,
+        "offset": 10
+      }
+    },
+    {
+      "age": "castle",
+      "at": {
+        "age": "feudal",
+        "offset": 705
+      }
+    }
+  ],
+  "steps": [
+    {
+      "vill": 1,
+      "through": 3,
+      "phase": "dark",
+      "action": "Build 2 Houses, then gather Sheep under the TC",
+      "build": "2× House",
+      "alloc": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 4,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 5,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 6,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on food."
+    },
+    {
+      "vill": 7,
+      "phase": "dark",
+      "action": "Build a Lumber Camp, then gather Wood",
+      "build": "Lumber Camp",
+      "alloc": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 8,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 9,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "3 on wood."
+    },
+    {
+      "vill": 10,
+      "phase": "dark",
+      "action": "Lure the 1st Boar",
+      "alloc": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 11,
+      "phase": "dark",
+      "action": "Gather Boar / Food under the TC",
+      "alloc": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 12,
+      "phase": "dark",
+      "action": "Build 2 Houses near your woodline to start walling",
+      "build": "2× House",
+      "alloc": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 13,
+      "phase": "dark",
+      "action": "Build a Mill on Berries, then gather Berries",
+      "build": "Mill",
+      "alloc": {
+        "food": 8,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "vill": 14,
+      "phase": "dark",
+      "action": "Gather Berries",
+      "alloc": {
+        "food": 9,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "vill": 15,
+      "phase": "dark",
+      "action": "Gather Berries — the Mill builder joins you",
+      "alloc": {
+        "food": 11,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 16,
+      "phase": "dark",
+      "action": "Gather Berries — the House builder returns to Food",
+      "alloc": {
+        "food": 13,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "4 on berries."
+    },
+    {
+      "vill": 17,
+      "phase": "dark",
+      "action": "Lure the 2nd Boar",
+      "alloc": {
+        "food": 14,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 18,
+      "phase": "dark",
+      "action": "Gather Boar / Food under the TC",
+      "alloc": {
+        "food": 15,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "18 population."
+    },
+    {
+      "vill": 19,
+      "phase": "dark",
+      "action": "Walk forward to your base perimeter and build a Barracks",
+      "build": "Barracks",
+      "alloc": {
+        "food": 15,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "feudal",
+      "vills": 19,
+      "phase": "dark",
+      "action": "Research Feudal Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 15,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "19 villagers + Scout = 20 population. Force-drop food from sheep, boar or berry villagers if you are a few short."
+    },
+    {
+      "click": "feudal",
+      "offset": 15,
+      "vills": 19,
+      "phase": "uptime-feudal",
+      "action": "Send 3 villagers from under the TC to Gold and build a Mining Camp",
+      "build": "Mining Camp",
+      "alloc": {
+        "food": 12,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 30,
+      "vills": 19,
+      "phase": "uptime-feudal",
+      "action": "Send 5 more villagers to Wood at the Lumber Camp",
+      "alloc": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "8 on wood."
+    },
+    {
+      "click": "feudal",
+      "offset": 50,
+      "vills": 19,
+      "phase": "uptime-feudal",
+      "action": "Queue 3 Militia at the Barracks while you advance",
+      "alloc": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 75,
+      "vills": 19,
+      "phase": "uptime-feudal",
+      "action": "Build a House with a spare villager, then move your 3 Militia forward",
+      "build": "House",
+      "alloc": {
+        "food": 6,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "age": "feudal",
+      "vills": 19,
+      "phase": "feudal",
+      "action": "Feudal Age. Research the Man-at-Arms upgrade at the Barracks right away",
+      "build": "Man-at-Arms",
+      "alloc": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 20,
+      "vills": 20,
+      "phase": "feudal",
+      "action": "Pull 1 TC villager to build an Archery Range near your base",
+      "build": "Archery Range",
+      "alloc": {
+        "food": 8,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 60,
+      "vills": 21,
+      "phase": "feudal",
+      "action": "Set the TC gather point to straggler trees near your TC",
+      "alloc": {
+        "food": 8,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 150,
+      "vills": 24,
+      "phase": "feudal",
+      "action": "Pull villagers off the stragglers to seed 4 Farms as wood allows",
+      "build": "4× Farm",
+      "alloc": {
+        "food": 12,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 200,
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Research Double-Bit Axe once you have 100 food and 50 wood",
+      "build": "Double-Bit Axe",
+      "alloc": {
+        "food": 13,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 240,
+      "vills": 26,
+      "phase": "feudal",
+      "action": "Keep pumping Archers while harassing with your Man-at-Arms",
+      "alloc": {
+        "food": 14,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 290,
+      "vills": 28,
+      "phase": "feudal",
+      "action": "Build a Blacksmith",
+      "build": "Blacksmith",
+      "alloc": {
+        "food": 15,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 350,
+      "vills": 30,
+      "phase": "feudal",
+      "action": "Research Fletching once the Blacksmith finishes",
+      "build": "Fletching",
+      "alloc": {
+        "food": 17,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 400,
+      "vills": 32,
+      "phase": "feudal",
+      "action": "Pull 1–2 villagers to palisade and fully wall your base while the Archers mass",
+      "alloc": {
+        "food": 17,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 520,
+      "vills": 35,
+      "phase": "feudal",
+      "action": "Keep building Farms until you have around 400 food banked",
+      "alloc": {
+        "food": 20,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 620,
+      "vills": 38,
+      "phase": "feudal",
+      "action": "At ~400 food, stop placing Farms and send new TC villagers to Gold",
+      "alloc": {
+        "food": 20,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 3
+      },
+      "note": "You need 200 gold banked for the Castle Age click."
+    },
+    {
+      "click": "castle",
+      "vills": 39,
+      "phase": "feudal",
+      "action": "Click Castle Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 24,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "Target ~20:30–21:00."
+    },
+    {
+      "click": "castle",
+      "offset": 30,
+      "vills": 39,
+      "phase": "uptime-castle",
+      "action": "Research Horse Collar and Gold Mining on the way up",
+      "build": "Horse Collar",
+      "alloc": {
+        "food": 24,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "castle",
+      "offset": 60,
+      "vills": 39,
+      "phase": "uptime-castle",
+      "action": "Research Padded Archer Armor at the Blacksmith",
+      "build": "Padded Archer Armor",
+      "alloc": {
+        "food": 24,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "castle",
+      "vills": 39,
+      "phase": "castle",
+      "action": "Castle Age. Upgrade instantly to Crossbowman, then research Bodkin Arrow and Heavy Plow",
+      "build": "Crossbowman",
+      "alloc": {
+        "food": 24,
+        "wood": 9,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      }
+    }
+  ]
+}

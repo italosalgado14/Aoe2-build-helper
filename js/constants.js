@@ -3,9 +3,16 @@
 // in real time, exactly like the in-game clock.
 
 export const VILL_TRAIN_SECONDS = 25;
-export const FEUDAL_RESEARCH_SECONDS = 130;
 export const LOOM_SECONDS = 25;
 export const STARTING_VILLAGERS = 3;
+
+// Age research times. Cross-checked against Toaster226's Fast Imperial, which
+// states a 12:27 Castle click and "~18:00" Imperial: 747 + 160 + 190 = 18:17.
+export const AGE_RESEARCH_SECONDS = {
+  feudal: 130,
+  castle: 160,
+  imperial: 190,
+};
 
 export const GAME_SPEEDS = [
   { multiplier: 1.0, label: 'Slow', hint: '1.0× — single player' },
@@ -24,10 +31,13 @@ export const RESOURCES = [
 ];
 
 export const PHASES = {
-  dark: { label: 'Dark Age', short: 'Dark' },
-  uptime: { label: 'Uptime', short: 'Uptime' },
-  feudal: { label: 'Feudal Age', short: 'Feudal' },
-  castle: { label: 'Castle Age', short: 'Castle' },
+  dark: { label: 'Dark Age' },
+  'uptime-feudal': { label: 'Up to Feudal' },
+  feudal: { label: 'Feudal Age' },
+  'uptime-castle': { label: 'Up to Castle' },
+  castle: { label: 'Castle Age' },
+  'uptime-imperial': { label: 'Up to Imperial' },
+  imperial: { label: 'Imperial Age' },
 };
 
 export const STORAGE_KEYS = {

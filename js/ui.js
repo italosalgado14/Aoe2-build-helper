@@ -36,6 +36,12 @@ export function allocChips(alloc, { compact = false } = {}) {
   );
 }
 
+// replaceChildren() stringifies null into the text "null"; el() filters but the
+// top-level container call does not, so every page mounts through this.
+export function mount(container, ...children) {
+  container.replaceChildren(...children.flat().filter((c) => c != null && c !== false));
+}
+
 export function phaseBadge(phase) {
   const meta = PHASES[phase];
   if (!meta) return null;
@@ -43,7 +49,7 @@ export function phaseBadge(phase) {
 }
 
 export function showError(container, error) {
-  container.replaceChildren(
+  mount(container,
     el('div', { class: 'error' },
       el('h2', { text: 'Something went wrong' }),
       el('pre', { text: error.message || String(error) }),

@@ -1,5 +1,5 @@
 import { loadBuild, formatClock } from './data.js';
-import { el, allocChips, phaseBadge, showError, qs } from './ui.js';
+import { el, mount, allocChips, phaseBadge, showError, qs } from './ui.js';
 import { PHASES } from './constants.js';
 
 const app = document.getElementById('app');
@@ -39,7 +39,7 @@ try {
     return out;
   });
 
-  app.replaceChildren(
+  mount(app, 
     el('div', { class: 'build-head' },
       el('h1', { text: build.name }),
       build.goal ? el('p', { class: 'goal', text: build.goal }) : null,
@@ -62,6 +62,13 @@ try {
       )),
       el('tbody', {}, rows),
     ),
+    build.civTips?.length
+      ? el('section', { class: 'civ-tips' },
+          el('h2', { text: 'Best civilisations for this build' }),
+          el('ul', {}, build.civTips.map((c) =>
+            el('li', {}, el('strong', { text: c.name }), ' — ', c.detail))),
+        )
+      : null,
     build.followUps?.length
       ? el('section', { class: 'follow-ups' },
           el('h2', { text: 'Follow-up options' }),

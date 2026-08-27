@@ -1,0 +1,629 @@
+{
+  "id": "fast-imperial-turks",
+  "name": "Fast Imperial into Hand Cannoneers",
+  "civs": [
+    "Turks"
+  ],
+  "difficulty": "Advanced",
+  "goal": "Click up at 24 population and reach Imperial around 18:00 with Hand Cannoneers and Bombard Cannons ready.",
+  "source": "Toaster226 — \"Learn Fast Imperial | 10 Minutes AoE2 Build Orders\"",
+  "notes": [
+    "Times are the ideal timeline with zero Town Centre idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
+    "Best on closed maps (Arena, Black Forest) or as a pocket player in team games.",
+    "The video's Dark Age villager numbering does not add up to its own stated 24-pop click. Corrected here: 23 villagers + Scout, with the \"+3 to wood\" being villagers shifted from under the TC rather than new ones.",
+    "Villager allocations after the first age-up click are author estimates built from the video's stated targets. The video stops giving a per-villager script at that point."
+  ],
+  "ages": [
+    {
+      "age": "feudal",
+      "at": {
+        "vill": 23,
+        "offset": 10
+      }
+    },
+    {
+      "age": "castle",
+      "at": {
+        "age": "feudal",
+        "offset": 107
+      }
+    },
+    {
+      "age": "imperial",
+      "at": {
+        "age": "castle"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "vill": 1,
+      "through": 3,
+      "phase": "dark",
+      "action": "Build 2 Houses, then gather Sheep under the TC",
+      "build": "2× House",
+      "alloc": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 4,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 5,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 6,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on food."
+    },
+    {
+      "vill": 7,
+      "phase": "dark",
+      "action": "Build a Lumber Camp, then gather Wood",
+      "build": "Lumber Camp",
+      "alloc": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 8,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 9,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 10,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "4 on wood."
+    },
+    {
+      "vill": 11,
+      "phase": "dark",
+      "action": "Lure the 1st Boar",
+      "alloc": {
+        "food": 7,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 12,
+      "phase": "dark",
+      "action": "Gather Boar / Hunt under the TC",
+      "alloc": {
+        "food": 8,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 13,
+      "phase": "dark",
+      "action": "Gather Boar / Hunt under the TC",
+      "alloc": {
+        "food": 9,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 14,
+      "phase": "dark",
+      "action": "Lure the 2nd Boar",
+      "alloc": {
+        "food": 10,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 15,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 11,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 16,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 12,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 17,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 13,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 18,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 14,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "14 under the TC for now — 3 of them shift to wood shortly."
+    },
+    {
+      "vill": 19,
+      "phase": "dark",
+      "action": "Build a Mill on Berries, then gather Berries",
+      "build": "Mill",
+      "alloc": {
+        "food": 15,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 20,
+      "phase": "dark",
+      "action": "Gather Berries",
+      "alloc": {
+        "food": 16,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 21,
+      "phase": "dark",
+      "action": "Gather Berries",
+      "alloc": {
+        "food": 17,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 22,
+      "phase": "dark",
+      "action": "Gather Berries",
+      "alloc": {
+        "food": 18,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "4 on berries."
+    },
+    {
+      "vill": 23,
+      "phase": "dark",
+      "action": "Build a Mining Camp on Gold, then mine",
+      "build": "Mining Camp",
+      "alloc": {
+        "food": 18,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 23,
+      "offset": 5,
+      "phase": "dark",
+      "action": "Shift 3 villagers from under the TC to Wood",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "This is where the video's \"villagers 24–26 to wood\" actually comes from — they are shifted, not new."
+    },
+    {
+      "click": "feudal",
+      "vills": 23,
+      "phase": "dark",
+      "action": "Research Feudal Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "23 villagers + Scout = 24 population. 11 under the TC, 4 on berries, 7 on wood, 1 on gold."
+    },
+    {
+      "click": "feudal",
+      "offset": 15,
+      "vills": 23,
+      "phase": "uptime-feudal",
+      "action": "Move 1 villager from the Hunt to Gold",
+      "alloc": {
+        "food": 14,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "2 on gold."
+    },
+    {
+      "click": "feudal",
+      "offset": 25,
+      "vills": 23,
+      "phase": "uptime-feudal",
+      "action": "Move 1 villager from the Hunt to Wood",
+      "alloc": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "8 on wood."
+    },
+    {
+      "click": "feudal",
+      "offset": 40,
+      "vills": 23,
+      "phase": "uptime-feudal",
+      "action": "Build up to 5 Farms near the TC and send the rest of the hunt villagers to Berries",
+      "build": "5× Farm",
+      "alloc": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 60,
+      "vills": 23,
+      "phase": "uptime-feudal",
+      "action": "Research Loom and queue 2 villagers at the TC",
+      "build": "Loom",
+      "alloc": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 80,
+      "vills": 23,
+      "phase": "uptime-feudal",
+      "action": "Take 1 Berry villager to build a House as part of your wall",
+      "build": "House",
+      "alloc": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Feudal Age. Research Double-Bit Axe at the Lumber Camp immediately",
+      "build": "Double-Bit Axe",
+      "alloc": {
+        "food": 14,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 15,
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Take 2 villagers off Berries to build a Market and a Blacksmith",
+      "build": "Market + Blacksmith",
+      "alloc": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 50,
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Move the remaining Berry villagers onto Farms until you have 10 — keep 2 on Berries",
+      "alloc": {
+        "food": 12,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 75,
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Send the 2 new TC villagers to Gold",
+      "alloc": {
+        "food": 10,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 3
+      },
+      "note": "4 on gold."
+    },
+    {
+      "click": "castle",
+      "vills": 25,
+      "phase": "feudal",
+      "action": "Click Castle Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 13,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "The video's stated timing: ~12:27."
+    },
+    {
+      "click": "castle",
+      "offset": 20,
+      "vills": 25,
+      "phase": "uptime-castle",
+      "action": "Queue 6 villagers at the TC during the transition",
+      "alloc": {
+        "food": 13,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "castle",
+      "offset": 60,
+      "vills": 27,
+      "phase": "uptime-castle",
+      "action": "New villagers 1–2 → straggler trees, then Farms as wood allows",
+      "alloc": {
+        "food": 15,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "castle",
+      "offset": 90,
+      "vills": 29,
+      "phase": "uptime-castle",
+      "action": "New villagers 3–4 → Gold",
+      "alloc": {
+        "food": 15,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on gold."
+    },
+    {
+      "click": "castle",
+      "offset": 120,
+      "vills": 31,
+      "phase": "uptime-castle",
+      "action": "New villagers 5–6 → Wood",
+      "alloc": {
+        "food": 15,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "10 on wood."
+    },
+    {
+      "click": "castle",
+      "offset": 140,
+      "vills": 31,
+      "phase": "uptime-castle",
+      "action": "Send 1 Berry villager to build a Siege Workshop and a University",
+      "build": "Siege Workshop + University",
+      "alloc": {
+        "food": 14,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "imperial",
+      "vills": 31,
+      "phase": "castle",
+      "action": "Castle Age — click straight up to Imperial",
+      "build": "Click up",
+      "alloc": {
+        "food": 14,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "31 villagers + Scout = 32 population, the \"32-pop Fast Imp\"."
+    },
+    {
+      "click": "imperial",
+      "offset": 20,
+      "vills": 31,
+      "phase": "uptime-imperial",
+      "action": "Pull 4 Gold miners, the builder and 1 Berry villager to build a 2nd Lumber Camp on a fresh woodline",
+      "build": "Lumber Camp",
+      "alloc": {
+        "food": 13,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "You urgently need wood for military buildings and to replace expiring farms."
+    },
+    {
+      "click": "imperial",
+      "offset": 60,
+      "vills": 31,
+      "phase": "uptime-imperial",
+      "action": "Pull 2 Wood villagers to build a House, a Barracks and at least 1 Archery Range",
+      "build": "Barracks + Archery Range",
+      "alloc": {
+        "food": 13,
+        "wood": 14,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "age": "imperial",
+      "vills": 31,
+      "phase": "imperial",
+      "action": "Imperial Age. Balance at the Market, then pump Hand Cannoneers and Bombard Cannons",
+      "alloc": {
+        "food": 13,
+        "wood": 14,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "note": "Turks get Chemistry free and auto-upgrade the Scout line to Hussars."
+    }
+  ],
+  "civTips": [
+    {
+      "name": "Turks",
+      "detail": "Free Chemistry, free Scout-line upgrades, +20% faster gold mining."
+    },
+    {
+      "name": "Byzantines",
+      "detail": "Imperial Age costs 33% less, and counter units are cheaper."
+    },
+    {
+      "name": "Malay",
+      "detail": "Age advancement is 66% faster."
+    },
+    {
+      "name": "Bulgarians",
+      "detail": "Free militia-line upgrades and faster-working blacksmiths."
+    }
+  ]
+}

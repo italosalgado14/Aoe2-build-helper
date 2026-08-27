@@ -1,5 +1,5 @@
 // Loading, validation and timeline derivation for build files.
-import { VILL_TRAIN_SECONDS, STARTING_VILLAGERS } from './constants.js';
+import { VILL_TRAIN_SECONDS, STARTING_VILLAGERS, AGE_RESEARCH_SECONDS, PHASES } from './constants.js';
 
 export function parseClock(value) {
   if (typeof value === 'number') return value;
@@ -26,30 +26,57 @@ export function villagerTime(n) {
   return Math.max(0, n - STARTING_VILLAGERS) * VILL_TRAIN_SECONDS;
 }
 
-function stepTime(step) {
-  const offset = step.offset || 0;
-  if (step.vill != null) return villagerTime(step.vill) + offset;
-  if (step.time != null) return parseClock(step.time) + offset;
-  if (step.pop != null) return villagerTime(step.pop - 1) + offset;
-  throw new Error(`Step has no trigger (vill / time / pop): ${step.action}`);
-}
-
-// How many villagers exist at a given game time, assuming the TC never idles.
+// How many villagers exist at a given game time. Only valid while the Town
+// Centre is producing without a pause, i.e. up to the first age-up click —
+// after that, production is build-specific and must be stated explicitly.
 export function villagersAt(gameSeconds) {
   return STARTING_VILLAGERS + Math.floor(gameSeconds / VILL_TRAIN_SECONDS);
 }
 
-// Derived from the step's time, not its trigger: a step with an `offset` can
-// land after the next villager has already popped. `vills` overrides this for
-// phases where production has stopped (uptime, researching an age).
-function stepVillagers(step, time) {
-  return step.vills != null ? step.vills : villagersAt(time);
+// One resolver for every trigger shape, used for both `ages` and `steps`.
+//   vill / pop  — derived from villager production
+//   time        — a fixed game clock reading
+//   age         — the moment you ARRIVE in that age
+//   click       — the moment you CLICK UP to that age
+function resolveTrigger(trigger, ages, what) {
+  const offset = trigger.offset || 0;
+  if (trigger.vill != null) return villagerTime(trigger.vill) + offset;
+  if (trigger.pop != null) return villagerTime(trigger.pop - 1) + offset;
+  if (trigger.time != null) return parseClock(trigger.time) + offset;
+  if (trigger.age != null) {
+    const t = ages.arrivals[trigger.age];
+    if (t == null) throw new Error(`${what} references age "${trigger.age}", which is not declared before it`);
+    return t + offset;
+  }
+  if (trigger.click != null) {
+    const t = ages.clicks[trigger.click];
+    if (t == null) throw new Error(`${what} references the "${trigger.click}" click, which is not declared before it`);
+    return t + offset;
+  }
+  throw new Error(`${what} has no trigger (vill / pop / time / age / click)`);
+}
+
+// A build declares only when it CLICKS each age; the arrival time is the click
+// plus that age's research, so the research constants stay in one place.
+function resolveAges(raw) {
+  const clicks = {};
+  const arrivals = {};
+  for (const entry of raw.ages || []) {
+    const research = AGE_RESEARCH_SECONDS[entry.age];
+    if (research == null) throw new Error(`Unknown age "${entry.age}" (expected ${Object.keys(AGE_RESEARCH_SECONDS).join(' / ')})`);
+    const click = resolveTrigger(entry.at, { clicks, arrivals }, `ages entry "${entry.age}"`);
+    clicks[entry.age] = click;
+    arrivals[entry.age] = click + research;
+  }
+  return { clicks, arrivals };
 }
 
 function stepLabel(step) {
   if (step.label) return step.label;
   if (step.through != null) return `Villagers ${step.vill}–${step.through}`;
   if (step.vill != null) return `Villager ${step.vill}`;
+  if (step.age != null) return PHASES[step.age]?.label || step.age;
+  if (step.click != null) return `Click ${step.click}`;
   return 'Timed';
 }
 
@@ -60,13 +87,31 @@ export function prepareBuild(raw) {
     throw new Error('Build has no steps');
   }
   const problems = [];
+  const ages = resolveAges(raw);
+  const clickTimes = Object.values(ages.clicks);
+  const firstClick = clickTimes.length ? Math.min(...clickTimes) : Infinity;
+
   const steps = raw.steps.map((step, index) => {
-    const time = stepTime(step);
-    const vills = stepVillagers(step, time);
-    const alloc = step.alloc || {};
-    const sum = Object.values(alloc).reduce((a, b) => a + b, 0);
+    const where = `step ${index + 1} ("${step.action}")`;
+    const time = resolveTrigger(step, ages, where);
+
+    // villagersAt() assumes an unbroken TC. Past the first click-up that stops
+    // being true — these builds queue their own villagers during each uptime —
+    // so require the author to state the count rather than guessing wrong.
+    let vills = step.vills;
+    if (vills == null) {
+      if (time > firstClick) {
+        problems.push(`${where} is after the first age-up click, so it needs an explicit "vills"`);
+      }
+      vills = villagersAt(time);
+    }
+
+    const sum = Object.values(step.alloc || {}).reduce((a, b) => a + b, 0);
     if (sum !== vills) {
-      problems.push(`step ${index + 1} ("${step.action}"): allocation totals ${sum} but there are ${vills} villagers`);
+      problems.push(`${where}: allocation totals ${sum} but there are ${vills} villagers`);
+    }
+    if (step.phase && !PHASES[step.phase]) {
+      problems.push(`${where}: unknown phase "${step.phase}"`);
     }
     return { ...step, index, time, vills, label: stepLabel(step) };
   });
@@ -78,7 +123,7 @@ export function prepareBuild(raw) {
   }
   if (problems.length) throw new Error(`Invalid build "${raw.id}":\n  - ${problems.join('\n  - ')}`);
 
-  return { ...raw, steps, duration: steps[steps.length - 1].time };
+  return { ...raw, steps, ages, duration: steps[steps.length - 1].time };
 }
 
 async function getJSON(url) {

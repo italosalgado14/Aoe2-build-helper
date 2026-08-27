@@ -8,8 +8,17 @@
   "goal": "Click up at 20 population, harass with 2 Militia, transition into Feudal Scouts.",
   "source": "Toaster226 — \"Learn Drush | 10 Minute AoE2 Build Orders\"",
   "notes": [
-    "Times are the ideal timeline with zero Town Center idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
+    "Times are the ideal timeline with zero Town Centre idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
     "Population counts the Scout: 19 villagers + 1 Scout = 20 pop."
+  ],
+  "ages": [
+    {
+      "age": "feudal",
+      "at": {
+        "vill": 19,
+        "offset": 5
+      }
+    }
   ],
   "steps": [
     {
@@ -256,8 +265,8 @@
       "note": "19 villagers + Scout = 20 population."
     },
     {
-      "vill": 19,
-      "offset": 5,
+      "click": "feudal",
+      "vills": 19,
       "phase": "dark",
       "action": "Research Feudal Age",
       "build": "Click up",
@@ -268,12 +277,13 @@
         "stone": 0,
         "builder": 0
       },
-      "note": "500 food. Feudal lands about 2:10 later."
+      "note": "500 food. Feudal lands 2:10 later."
     },
     {
-      "vill": 19,
-      "offset": 15,
-      "phase": "dark",
+      "click": "feudal",
+      "offset": 10,
+      "vills": 19,
+      "phase": "uptime-feudal",
       "action": "Send your 2 Militia + starting Scout toward the opponent's base",
       "alloc": {
         "food": 17,
@@ -285,9 +295,10 @@
       "note": "Focus berries and woodlines. The goal is idle time, not kills."
     },
     {
-      "time": "7:05",
+      "click": "feudal",
+      "offset": 20,
       "vills": 19,
-      "phase": "uptime",
+      "phase": "uptime-feudal",
       "action": "Wood rebalance — put 6 villagers on Wood",
       "alloc": {
         "food": 13,
@@ -298,9 +309,10 @@
       }
     },
     {
-      "time": "7:20",
+      "click": "feudal",
+      "offset": 35,
       "vills": 19,
-      "phase": "uptime",
+      "phase": "uptime-feudal",
       "action": "Send 6 villagers to build a Mill and gather Berries",
       "build": "Mill",
       "alloc": {
@@ -313,9 +325,10 @@
       "note": "Berries are food, so the totals do not change — 6 of your 13 food villagers move onto the Mill."
     },
     {
-      "time": "7:35",
+      "click": "feudal",
+      "offset": 50,
       "vills": 19,
-      "phase": "uptime",
+      "phase": "uptime-feudal",
       "action": "Send 1 villager to build a House on your wall line and have it wait to drop a Stable",
       "build": "House",
       "alloc": {
@@ -328,9 +341,10 @@
       "note": "This villager is your Stable builder the instant Feudal lands."
     },
     {
-      "time": "7:50",
+      "click": "feudal",
+      "offset": 65,
       "vills": 19,
-      "phase": "uptime",
+      "phase": "uptime-feudal",
       "action": "Remaining food villagers: finish the hunt, then straggler trees or farms as wood allows",
       "alloc": {
         "food": 12,
@@ -341,7 +355,7 @@
       }
     },
     {
-      "time": "8:55",
+      "age": "feudal",
       "vills": 19,
       "phase": "feudal",
       "action": "Feudal Age. Research Loom immediately, then queue villagers",
@@ -355,7 +369,8 @@
       }
     },
     {
-      "time": "9:00",
+      "age": "feudal",
+      "offset": 5,
       "vills": 19,
       "phase": "feudal",
       "action": "Build the Stable with your prepped villager and start producing Scouts",
@@ -369,7 +384,8 @@
       }
     },
     {
-      "time": "9:15",
+      "age": "feudal",
+      "offset": 20,
       "vills": 19,
       "phase": "feudal",
       "action": "Add farms as wood permits, wall your base, keep double-pronged pressure with Militia + Scouts",

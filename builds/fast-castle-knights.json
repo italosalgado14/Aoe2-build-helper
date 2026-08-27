@@ -1,0 +1,580 @@
+{
+  "id": "fast-castle-knights",
+  "name": "Fast Castle into Knights",
+  "civs": [
+    "Generic"
+  ],
+  "difficulty": "Intermediate",
+  "goal": "Click up at 25 population, reach Castle around 15:00 with a Stable already running Knights.",
+  "source": "Toaster226 — \"Learn Fast Castle | 10 Minute AoE2 Build Orders\"",
+  "notes": [
+    "Times are the ideal timeline with zero Town Centre idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
+    "Population: you click Feudal at 24 villagers + Scout = 25 pop. The 2 villagers queued during the uptime make it 26 villagers / 27 pop on arrival in Feudal.",
+    "Villager allocations after the first age-up click are author estimates built from the video's stated targets. The video stops giving a per-villager script at that point."
+  ],
+  "ages": [
+    {
+      "age": "feudal",
+      "at": {
+        "vill": 24,
+        "offset": 5
+      }
+    },
+    {
+      "age": "castle",
+      "at": {
+        "age": "feudal",
+        "offset": 80
+      }
+    }
+  ],
+  "steps": [
+    {
+      "vill": 1,
+      "through": 3,
+      "phase": "dark",
+      "action": "Build 2 Houses, then gather Sheep under the TC",
+      "build": "2× House",
+      "alloc": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 4,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 5,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 6,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on food."
+    },
+    {
+      "vill": 7,
+      "phase": "dark",
+      "action": "Build a Lumber Camp, then gather Wood",
+      "build": "Lumber Camp",
+      "alloc": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 8,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "Only 2 on wood for now — food comes first in a Fast Castle."
+    },
+    {
+      "vill": 9,
+      "phase": "dark",
+      "action": "Push Deer / gather Hunt under the TC",
+      "alloc": {
+        "food": 7,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 10,
+      "phase": "dark",
+      "action": "Push Deer / gather Hunt under the TC",
+      "alloc": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 11,
+      "phase": "dark",
+      "action": "Lure the 1st Boar",
+      "alloc": {
+        "food": 9,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 12,
+      "phase": "dark",
+      "action": "Build the 3rd House on the way out, then lure the forward Boar",
+      "build": "House",
+      "alloc": {
+        "food": 9,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 13,
+      "phase": "dark",
+      "action": "Gather Hunt under the TC — the House builder rejoins Food",
+      "alloc": {
+        "food": 11,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 14,
+      "phase": "dark",
+      "action": "Gather Hunt under the TC",
+      "alloc": {
+        "food": 12,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 15,
+      "phase": "dark",
+      "action": "Gather Hunt under the TC",
+      "alloc": {
+        "food": 13,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 16,
+      "phase": "dark",
+      "action": "Gather Hunt under the TC",
+      "alloc": {
+        "food": 14,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "14 on food / hunt."
+    },
+    {
+      "vill": 17,
+      "phase": "dark",
+      "action": "Build a 4th House",
+      "build": "House",
+      "alloc": {
+        "food": 14,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 18,
+      "phase": "dark",
+      "action": "Gather Wood at the Lumber Camp",
+      "alloc": {
+        "food": 14,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 19,
+      "phase": "dark",
+      "action": "Gather Wood — the House builder returns to Food",
+      "alloc": {
+        "food": 15,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 20,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 15,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 21,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 15,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 22,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "7 on wood."
+    },
+    {
+      "vill": 23,
+      "phase": "dark",
+      "action": "Build a Mining Camp on Gold, then mine",
+      "build": "Mining Camp",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 24,
+      "phase": "dark",
+      "action": "Mine Gold",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "2 on gold. 24 villagers + Scout = 25 population."
+    },
+    {
+      "click": "feudal",
+      "vills": 24,
+      "phase": "dark",
+      "action": "Research Feudal Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "The video's \"click at 26 population\" is a typo — the Dark Age list totals 24 villagers."
+    },
+    {
+      "click": "feudal",
+      "offset": 10,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Research Loom and queue 2 villagers at the TC",
+      "build": "Loom",
+      "alloc": {
+        "food": 15,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 25,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Add 2 villagers to Wood at the Lumber Camp",
+      "alloc": {
+        "food": 13,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "9 on wood."
+    },
+    {
+      "click": "feudal",
+      "offset": 40,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Send 5 villagers to build a Mill and gather Berries",
+      "build": "Mill",
+      "alloc": {
+        "food": 13,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "Berries are food, so the totals do not move — 5 of your food villagers relocate."
+    },
+    {
+      "click": "feudal",
+      "offset": 55,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Build 4 Farms around the TC with hunt villagers as the hunt runs out",
+      "build": "4× Farm",
+      "alloc": {
+        "food": 13,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 70,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Send 1 villager to straggler trees — it builds a House, then a Farm",
+      "build": "House",
+      "alloc": {
+        "food": 12,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 90,
+      "vills": 24,
+      "phase": "uptime-feudal",
+      "action": "Send 1 more villager to straggler trees; it stays on Wood to raise military buildings later",
+      "alloc": {
+        "food": 11,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "This is your dedicated builder for the Barracks and Stable in the Castle uptime."
+    },
+    {
+      "age": "feudal",
+      "vills": 26,
+      "phase": "feudal",
+      "action": "Feudal Age. The 2 queued villagers arrive — send both to straggler trees, then Farms as wood allows",
+      "alloc": {
+        "food": 11,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "26 villagers + Scout = 27 population."
+    },
+    {
+      "age": "feudal",
+      "offset": 15,
+      "vills": 26,
+      "phase": "feudal",
+      "action": "Take 2 villagers off Berries to build a Blacksmith, then a Market — one after the other",
+      "build": "Blacksmith → Market",
+      "alloc": {
+        "food": 9,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "note": "Sequential, not parallel: wood is tight at this point."
+    },
+    {
+      "age": "feudal",
+      "offset": 60,
+      "vills": 26,
+      "phase": "feudal",
+      "action": "Open the Market and sell 100 Stone for gold",
+      "build": "Market",
+      "alloc": {
+        "food": 9,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": 3
+      },
+      "note": "A gold buffer so Knights can start the moment Castle lands — you only have 2 on gold."
+    },
+    {
+      "click": "castle",
+      "vills": 26,
+      "phase": "feudal",
+      "action": "Click Castle Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 11,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "Target ~12:00–12:30."
+    },
+    {
+      "click": "castle",
+      "offset": 15,
+      "vills": 26,
+      "phase": "uptime-castle",
+      "action": "Take the dedicated straggler villager to build a Barracks, a Stable and a House",
+      "build": "Barracks + Stable",
+      "alloc": {
+        "food": 11,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "click": "castle",
+      "offset": 40,
+      "vills": 26,
+      "phase": "uptime-castle",
+      "action": "Research Double-Bit Axe and Gold Mining on the way up",
+      "build": "Double-Bit Axe",
+      "alloc": {
+        "food": 11,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      }
+    },
+    {
+      "click": "castle",
+      "offset": 70,
+      "vills": 26,
+      "phase": "uptime-castle",
+      "action": "Use spare Berry villagers to wall up your base",
+      "alloc": {
+        "food": 9,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      }
+    },
+    {
+      "age": "castle",
+      "vills": 26,
+      "phase": "castle",
+      "action": "Castle Age. Start Knights from the Stable and villagers from the TC",
+      "alloc": {
+        "food": 13,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "age": "castle",
+      "offset": 60,
+      "vills": 30,
+      "phase": "castle",
+      "action": "Send the first 4 new TC villagers straight to Gold",
+      "alloc": {
+        "food": 13,
+        "wood": 11,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on gold keeps one Stable running constantly."
+    },
+    {
+      "age": "castle",
+      "offset": 150,
+      "vills": 30,
+      "phase": "castle",
+      "action": "Settle into the target economy: 12 on Food, 6 on Gold",
+      "alloc": {
+        "food": 12,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "12 on food = 6 for the TC + 6 for the Stable."
+    }
+  ],
+  "civTips": [
+    {
+      "name": "Franks",
+      "detail": "Cavalry +20% HP from Feudal, Knights get +2 line of sight."
+    },
+    {
+      "name": "Berbers",
+      "detail": "Stable units cost 15% less in Castle Age."
+    },
+    {
+      "name": "Burgundians",
+      "detail": "Economy upgrades an age earlier and cheaper."
+    },
+    {
+      "name": "Vietnamese",
+      "detail": "Economy upgrades cost no wood and research twice as fast."
+    }
+  ]
+}

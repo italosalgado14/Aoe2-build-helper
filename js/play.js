@@ -1,6 +1,6 @@
 import { loadBuild, formatClock, formatDrift, stepIndexAt } from './data.js';
 import { GameClock } from './timer.js';
-import { el, allocChips, phaseBadge, showError, qs } from './ui.js';
+import { el, mount, allocChips, phaseBadge, showError, qs } from './ui.js';
 import { FollowState } from './follow.js';
 import { GAME_SPEEDS, DEFAULT_SPEED, STORAGE_KEYS } from './constants.js';
 
@@ -58,7 +58,7 @@ try {
       el('span', { class: 'si-action', text: s.action }),
     )));
 
-  app.replaceChildren(
+  mount(app, 
     el('header', { class: 'play-header' },
       el('a', { class: 'back', href: `build.html?id=${encodeURIComponent(build.id)}`, text: '← Build' }),
       el('h1', { text: build.name }),

@@ -1,0 +1,372 @@
+{
+  "id": "fast-feudal-scouts",
+  "name": "Fast Feudal into Scouts",
+  "civs": [
+    "Generic"
+  ],
+  "difficulty": "Beginner",
+  "goal": "Click up at 19 population for the earliest realistic Feudal pressure, or to defend an incoming rush.",
+  "source": "Toaster226 — \"Learn Fast Feudal | 10-Minute AoE2 Build Orders\"",
+  "notes": [
+    "Times are the ideal timeline with zero Town Centre idle time. Real games run 30–60s behind — use the Next button to stay in sync.",
+    "18 villagers + 1 Scout = 19 population.",
+    "Villager allocations after the first age-up click are author estimates built from the video's stated targets. The video stops giving a per-villager script at that point."
+  ],
+  "ages": [
+    {
+      "age": "feudal",
+      "at": {
+        "vill": 18,
+        "offset": 5
+      }
+    }
+  ],
+  "steps": [
+    {
+      "vill": 1,
+      "through": 3,
+      "phase": "dark",
+      "action": "Build 2 Houses, then gather Sheep under the TC",
+      "build": "2× House",
+      "alloc": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 4,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 5,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 6,
+      "phase": "dark",
+      "action": "Gather Sheep under the TC",
+      "alloc": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "6 on food."
+    },
+    {
+      "vill": 7,
+      "phase": "dark",
+      "action": "Build a Lumber Camp, then gather Wood",
+      "build": "Lumber Camp",
+      "alloc": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 8,
+      "phase": "dark",
+      "action": "Gather Wood",
+      "alloc": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "Only 2 on wood — this build rushes the uptime."
+    },
+    {
+      "vill": 9,
+      "phase": "dark",
+      "action": "Build the 3rd House on your walling line, then lure the 1st Boar / Rhino",
+      "build": "House",
+      "alloc": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 10,
+      "phase": "dark",
+      "action": "Gather Boar / Hunt under the TC",
+      "alloc": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 11,
+      "phase": "dark",
+      "action": "Gather Hunt / Deer under the TC",
+      "alloc": {
+        "food": 9,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 12,
+      "phase": "dark",
+      "action": "Gather Hunt / Deer under the TC",
+      "alloc": {
+        "food": 10,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 13,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 11,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 14,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 12,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 15,
+      "phase": "dark",
+      "action": "Gather Hunt / Sheep under the TC",
+      "alloc": {
+        "food": 13,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "13 on food under the TC."
+    },
+    {
+      "vill": 16,
+      "phase": "dark",
+      "action": "Build a Mill on Berries, then gather Berries",
+      "build": "Mill",
+      "alloc": {
+        "food": 13,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 17,
+      "phase": "dark",
+      "action": "Gather Wood at the Lumber Camp",
+      "alloc": {
+        "food": 14,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "vill": 18,
+      "phase": "dark",
+      "action": "Gather Wood at the Lumber Camp",
+      "alloc": {
+        "food": 14,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "4 on wood. 18 villagers + Scout = 19 population."
+    },
+    {
+      "click": "feudal",
+      "vills": 18,
+      "phase": "dark",
+      "action": "Research Feudal Age",
+      "build": "Click up",
+      "alloc": {
+        "food": 14,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 15,
+      "vills": 18,
+      "phase": "uptime-feudal",
+      "action": "Move villagers off the hunt as it finishes — put 4 on Berries at the Mill",
+      "alloc": {
+        "food": 14,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "Berries are food, so the totals do not move."
+    },
+    {
+      "click": "feudal",
+      "offset": 30,
+      "vills": 18,
+      "phase": "uptime-feudal",
+      "action": "Send 4 more villagers from under the TC to Wood",
+      "alloc": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 0
+      },
+      "note": "8 on wood."
+    },
+    {
+      "click": "feudal",
+      "offset": 45,
+      "vills": 18,
+      "phase": "uptime-feudal",
+      "action": "Take 1 Wood villager to build a House and a Barracks on the way up",
+      "build": "House + Barracks",
+      "alloc": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "click": "feudal",
+      "offset": 60,
+      "vills": 18,
+      "phase": "uptime-feudal",
+      "action": "Research Loom at the TC",
+      "build": "Loom",
+      "alloc": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "note": "Research it before clicking up instead if you had idle TC time."
+    },
+    {
+      "age": "feudal",
+      "vills": 18,
+      "phase": "feudal",
+      "action": "Feudal Age. Build a Stable with the villager that built the Barracks",
+      "build": "Stable",
+      "alloc": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 10,
+      "vills": 18,
+      "phase": "feudal",
+      "action": "Resume villager production at the TC immediately",
+      "alloc": {
+        "food": 10,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "age": "feudal",
+      "offset": 40,
+      "vills": 19,
+      "phase": "feudal",
+      "action": "Start producing Scouts and send them forward to deal early damage",
+      "alloc": {
+        "food": 11,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    }
+  ],
+  "followUps": [
+    {
+      "name": "Archers instead of Scouts",
+      "detail": "During the uptime send the extra villagers to Gold rather than wood and berries, and build an Archery Range instead of a Stable."
+    },
+    {
+      "name": "Men-at-Arms",
+      "detail": "Add a Barracks in Dark Age and open with Militia before the Feudal units arrive."
+    }
+  ],
+  "civTips": [
+    {
+      "name": "Mongols",
+      "detail": "Hunt 40% faster, which allows an even earlier uptime than 19 pop."
+    },
+    {
+      "name": "Huns",
+      "detail": "No Houses needed, and Stables work 20% faster."
+    },
+    {
+      "name": "Magyars",
+      "detail": "Free infantry and cavalry attack upgrades — +1 attack in Feudal."
+    },
+    {
+      "name": "Franks / Britons / Lithuanians",
+      "detail": "Any civilisation with an early food or gathering bonus."
+    }
+  ]
+}
