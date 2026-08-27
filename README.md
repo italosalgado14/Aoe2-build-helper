@@ -9,8 +9,9 @@ moment.
 **Live:** <https://italosalgado14.github.io/Aoe2-build-helper/>
 
 - **Read view** — the whole build as a table, printable.
-- **Play view** — a big game clock, the current step, the next step, the villager
-  spread, and a drift indicator telling you how far behind the ideal timeline you are.
+- **Play view** — a big game clock, the step you just finished, the current step, the
+  next step, the villager spread, and a drift indicator telling you how far behind the
+  ideal timeline you are.
 
 No build step, no dependencies. Plain HTML, CSS and ES modules.
 

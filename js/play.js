@@ -2,7 +2,7 @@ import { loadBuild, formatClock, formatDrift, stepIndexAt } from './data.js';
 import { GameClock } from './timer.js';
 import { el, mount, allocChips, phaseBadge, showError, qs } from './ui.js';
 import { FollowState } from './follow.js';
-import { GAME_SPEEDS, DEFAULT_SPEED, STORAGE_KEYS } from './constants.js';
+import { GAME_SPEEDS, DEFAULT_SPEED, STORAGE_KEYS, PHASES } from './constants.js';
 
 const app = document.getElementById('app');
 
@@ -39,6 +39,7 @@ try {
   const stepBuildEl = el('div', { class: 'now-build' });
   const stepNoteEl = el('p', { class: 'now-note' });
   const allocEl = el('div', { class: 'now-alloc' });
+  const prevEl = el('div', { class: 'prev' });
   const nextEl = el('div', { class: 'next' });
 
   const playBtn = el('button', { class: 'btn btn-primary btn-lg', onClick: toggleRun });
@@ -67,6 +68,7 @@ try {
     el('section', { class: 'stage' },
       el('div', { class: 'clock-row' }, clockEl, el('div', { class: 'clock-meta' }, statusEl, driftEl)),
       el('div', { class: 'progress' }, progressEl),
+      prevEl,
       el('div', { class: 'now' }, stepLabelEl, stepActionEl, stepBuildEl, stepNoteEl,
         el('div', { class: 'now-alloc-wrap' }, el('span', { class: 'now-alloc-title', text: 'Villagers on' }), allocEl)),
       nextEl,
@@ -146,10 +148,10 @@ try {
     const item = listEl.children[index];
     if (!item || listEl.scrollHeight <= listEl.clientHeight) return;
     const delta = item.getBoundingClientRect().top - listEl.getBoundingClientRect().top;
-    listEl.scrollTo({
-      top: listEl.scrollTop + delta - listEl.clientHeight / 2 + item.offsetHeight / 2,
-      behavior: 'smooth',
-    });
+    // Assigned directly rather than scrollTo({behavior:'smooth'}): smooth scrolls
+    // cancel each other when Next is pressed rapidly, and the animation is a
+    // no-op in some environments, which left the list stuck at the top.
+    listEl.scrollTop = listEl.scrollTop + delta - listEl.clientHeight / 2 + item.offsetHeight / 2;
   }
 
   let lastRendered = -1;
@@ -158,6 +160,7 @@ try {
     const index = currentIndex(); // also hands control back if the clock caught up
     const current = steps[index];
     const next = steps[index + 1];
+    const previous = steps[index - 1];
 
     clockEl.textContent = formatClock(gameSeconds);
     clockEl.classList.toggle('paused', !clock.running);
@@ -192,13 +195,23 @@ try {
       stepNoteEl.textContent = current.note || '';
       stepNoteEl.hidden = !current.note;
       allocEl.replaceChildren(allocChips(current.alloc));
+      prevEl.replaceChildren(
+        previous
+          ? el('div', { class: 'prev-inner' },
+              el('span', { class: 'prev-tag', text: 'Done' }),
+              el('span', { class: 'prev-time', text: formatClock(previous.time) }),
+              el('span', { class: 'prev-action', text: previous.action }),
+              previous.build ? el('span', { class: 'prev-build', text: previous.build }) : null)
+          : el('div', { class: 'prev-inner empty', text: 'Start of the build' }),
+      );
       nextEl.replaceChildren(
         next
           ? el('div', { class: 'next-inner' },
               el('span', { class: 'next-tag', text: 'Next' }),
               el('span', { class: 'next-time', text: formatClock(next.time) }),
-              el('span', { class: 'next-action', text: next.action }))
-          : el('div', { class: 'next-inner done', text: 'Build complete — you are in Feudal with pressure on the map.' }),
+              el('span', { class: 'next-action', text: next.action }),
+              next.build ? el('span', { class: 'next-build', text: next.build }) : null)
+          : el('div', { class: 'next-inner done', text: `Build complete — ${PHASES[current.phase]?.label || 'done'} reached.` }),
       );
       for (const item of listEl.children) {
         const i = Number(item.dataset.index);
