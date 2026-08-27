@@ -76,7 +76,7 @@ function stepLabel(step) {
   if (step.through != null) return `Villagers ${step.vill}–${step.through}`;
   if (step.vill != null) return `Villager ${step.vill}`;
   if (step.age != null) return PHASES[step.age]?.label || step.age;
-  if (step.click != null) return `Click ${step.click}`;
+  if (step.click != null) return `Click ${step.click[0].toUpperCase()}${step.click.slice(1)}`;
   return 'Timed';
 }
 
