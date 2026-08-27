@@ -72,6 +72,46 @@ ok('rejects backwards timeline', (() => { try {
   prepareBuild({ id:'x', steps:[{ time:'5:00', vills:1, action:'a', alloc:{food:1} },{ time:'1:00', vills:1, action:'b', alloc:{food:1} }] }); return false;
 } catch(e) { return /backwards in time/.test(e.message); } })());
 
+// --- follow state (auto vs manual) ---------------------------------------
+const { FollowState } = await import('./js/follow.js');
+
+// the regression this module exists for: jumping BEHIND the clock must stick
+{
+  const f = new FollowState();
+  f.resolve(10);                       // clock is on step 10
+  f.goTo(7, 10);                       // player is really on step 7
+  ok('jump behind the clock sticks', f.resolve(10) === 7, `got ${f.resolve(10)}`);
+  ok('...still sticks as the clock runs on', f.resolve(12) === 7, `got ${f.resolve(12)}`);
+  ok('...and reports manual', f.auto === false);
+  f.follow(12);
+  ok('Follow clock returns to auto', f.auto === true && f.resolve(12) === 12);
+}
+// jumping AHEAD hands control back once the clock catches up
+{
+  const f = new FollowState();
+  f.resolve(5);
+  f.goTo(7, 5);
+  ok('jump ahead pins the step', f.resolve(5) === 7 && f.auto === false);
+  ok('...holds while the clock is behind it', f.resolve(6) === 7);
+  ok('...auto resumes when the clock arrives', f.resolve(7) === 7 && f.auto === true);
+  ok('...and follows onward', f.resolve(9) === 9);
+}
+// jumping to the step the clock is already on is just "follow"
+{
+  const f = new FollowState();
+  f.resolve(4);
+  f.goTo(4, 4);
+  ok('jump to the current step stays auto', f.auto === true && f.resolve(6) === 6);
+}
+// Prev from an auto position must not snap forward
+{
+  const f = new FollowState();
+  const auto = 10;
+  const shown = f.resolve(auto);
+  f.goTo(shown - 1, auto);
+  ok('Prev while auto goes back and stays', f.resolve(auto) === 9, `got ${f.resolve(auto)}`);
+}
+
 lines.push('', fails === 0 ? `ALL ${lines.filter(l=>l.startsWith('PASS')).length} CHECKS PASSED` : `${fails} FAILURES`);
 document.getElementById('out').textContent = lines.join('\n');
 </script></body></html>

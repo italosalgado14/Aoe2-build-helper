@@ -178,21 +178,6 @@
       }
     },
     {
-      "vill": 15,
-      "offset": 10,
-      "phase": "dark",
-      "action": "Barracks completes: queue 2 Militia. The same builder starts the 4th House",
-      "build": "House",
-      "alloc": {
-        "food": 11,
-        "wood": 3,
-        "gold": 0,
-        "stone": 0,
-        "builder": 1
-      },
-      "note": "Queue the Militia the instant the Barracks finishes — they are the whole point of the build."
-    },
-    {
       "vill": 16,
       "phase": "dark",
       "action": "Gather Hunt / Food under the TC",
@@ -206,29 +191,44 @@
     },
     {
       "vill": 16,
-      "offset": 15,
+      "offset": 5,
       "phase": "dark",
-      "action": "4th House done — that villager returns to Food. Shift 1 villager from Wood back to Food",
+      "action": "Barracks completes: queue 2 Militia. The same builder starts the 4th House",
+      "build": "House",
       "alloc": {
-        "food": 14,
-        "wood": 2,
+        "food": 12,
+        "wood": 3,
         "gold": 0,
         "stone": 0,
-        "builder": 0
+        "builder": 1
       },
-      "note": "Dropping to 2 on wood keeps food income high enough to click up without the TC idling."
+      "note": "Queue the Militia the instant the Barracks finishes — they are the whole point of the build."
     },
     {
       "vill": 17,
       "phase": "dark",
       "action": "Gather Hunt / Food under the TC",
       "alloc": {
+        "food": 13,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      }
+    },
+    {
+      "vill": 17,
+      "offset": 10,
+      "phase": "dark",
+      "action": "4th House done — that villager returns to Food. Shift 1 villager from Wood back to Food",
+      "alloc": {
         "food": 15,
         "wood": 2,
         "gold": 0,
         "stone": 0,
         "builder": 0
-      }
+      },
+      "note": "Dropping to 2 on wood keeps food income high enough to click up without the TC idling."
     },
     {
       "vill": 18,

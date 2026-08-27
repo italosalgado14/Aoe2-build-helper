@@ -1,7 +1,8 @@
 import { loadBuild, formatClock, formatDrift, stepIndexAt } from './data.js';
 import { GameClock } from './timer.js';
 import { el, allocChips, phaseBadge, showError, qs } from './ui.js';
-import { GAME_SPEEDS, DEFAULT_SPEED, STORAGE_KEYS, PHASES } from './constants.js';
+import { FollowState } from './follow.js';
+import { GAME_SPEEDS, DEFAULT_SPEED, STORAGE_KEYS } from './constants.js';
 
 const app = document.getElementById('app');
 
@@ -19,11 +20,11 @@ try {
 
   const steps = build.steps;
   const clock = new GameClock(readSpeed());
-  let autoFollow = true;
-  let manualIndex = 0;
+  const follow = new FollowState();
   let wakeLock = null;
 
-  const currentIndex = () => (autoFollow ? stepIndexAt(steps, clock.gameSeconds) : manualIndex);
+  const autoIndex = () => stepIndexAt(steps, clock.gameSeconds);
+  const currentIndex = () => follow.resolve(autoIndex());
 
   // ---- static shell -------------------------------------------------------
   const clockEl = el('div', { class: 'clock', text: '0:00' });
@@ -83,29 +84,25 @@ try {
   }
 
   function step(delta) {
-    const from = currentIndex();
-    const target = Math.min(steps.length - 1, Math.max(0, from + delta));
-    autoFollow = false;
-    manualIndex = target;
+    const target = Math.min(steps.length - 1, Math.max(0, currentIndex() + delta));
     if (delta > 0 && !clock.running) clock.start();
+    follow.goTo(target, autoIndex());
     render();
   }
 
   function jumpTo(index) {
-    autoFollow = false;
-    manualIndex = index;
+    follow.goTo(index, autoIndex());
     render();
   }
 
   function resumeFollow() {
-    autoFollow = true;
+    follow.follow(autoIndex());
     render();
   }
 
   function reset() {
     clock.reset();
-    autoFollow = true;
-    manualIndex = 0;
+    follow.follow(0);
     releaseWakeLock();
     render();
   }
@@ -137,7 +134,11 @@ try {
     else if (key === 'r') { event.preventDefault(); reset(); }
   });
 
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) return;
+    if (clock.running) requestWakeLock(); // the browser drops the lock when hidden
+    render();
+  });
 
   // Scroll only the step list, never the page: on the narrow layout the list is
   // in normal flow, so scrollIntoView would drag the clock off-screen.
@@ -154,7 +155,7 @@ try {
   let lastRendered = -1;
   function render() {
     const gameSeconds = clock.gameSeconds;
-    const index = currentIndex();
+    const index = currentIndex(); // also hands control back if the clock caught up
     const current = steps[index];
     const next = steps[index + 1];
 
@@ -162,14 +163,21 @@ try {
     clockEl.classList.toggle('paused', !clock.running);
     playBtn.textContent = clock.running ? '❚❚ Pause' : (gameSeconds > 0 ? '▶ Resume' : '▶ Start');
 
-    // If the clock catches up to a step you advanced to early, hand control back.
-    if (!autoFollow && stepIndexAt(steps, gameSeconds) >= manualIndex) autoFollow = true;
-    statusEl.textContent = autoFollow ? 'Following clock' : 'Manual';
-    statusEl.classList.toggle('manual', !autoFollow);
-    followBtn.hidden = autoFollow;
+    statusEl.textContent = follow.auto ? 'Following clock' : 'Manual';
+    statusEl.classList.toggle('manual', !follow.auto);
+    followBtn.hidden = follow.auto;
 
-    driftEl.textContent = clock.running || gameSeconds > 0 ? formatDrift(gameSeconds - current.time) : '';
-    driftEl.className = `drift ${gameSeconds - current.time > 12 ? 'late' : ''}`;
+    // Drift only means something when you are driving: in auto mode the current
+    // step is by definition one the clock has already passed, so a drift figure
+    // would read "behind" permanently. Show the countdown to the next step instead.
+    if (!follow.auto) {
+      const drift = gameSeconds - current.time;
+      driftEl.textContent = formatDrift(drift);
+      driftEl.className = `drift ${drift > 12 ? 'late' : ''}`;
+    } else {
+      driftEl.textContent = next ? `next in ${Math.max(0, Math.ceil(next.time - gameSeconds))}s` : '';
+      driftEl.className = 'drift';
+    }
 
     progressEl.style.width = `${Math.min(100, (gameSeconds / build.duration) * 100)}%`;
 
