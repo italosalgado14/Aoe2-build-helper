@@ -63,3 +63,5 @@ Follow-Up Options After the Drush
     Option 3: Fast Feudal transition into Men-at-Arms + Tower Rush.
 
 The idea is in every step you tell me how many villagers are in wood, stone, food and gold. THe idea is the guide show me in real time when I set play in the web page an advanced timer and I follow th build.
+
+Late a give you more build. If you need more details or in a different format, tell me.

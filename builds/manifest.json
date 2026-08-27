@@ -1,0 +1,13 @@
+{
+  "builds": [
+    {
+      "id": "drush-into-scouts",
+      "file": "builds/drush-into-scouts.json",
+      "name": "Drush into Fast Feudal Scouts",
+      "civs": ["Generic"],
+      "difficulty": "Intermediate",
+      "uptime": "20 pop",
+      "summary": "Dark Age Militia rush that transitions straight into Feudal Scouts for constant map pressure."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>selftest</title></head>
+<body><pre id="out">running</pre>
+<script type="module">
+import { GameClock } from './js/timer.js';
+import { loadBuild, formatClock, formatDrift, villagersAt, stepIndexAt, parseClock } from './js/data.js';
+const lines = []; let fails = 0;
+const ok = (name, cond, extra='') => { lines.push(`${cond?'PASS':'FAIL'}  ${name}${extra?'  '+extra:''}`); if(!cond) fails++; };
+const near = (a,b,tol=0.08) => Math.abs(a-b) <= tol;
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+// --- clock ---------------------------------------------------------------
+const c = new GameClock(1.7);
+ok('clock starts at 0', c.gameSeconds === 0);
+ok('clock not running before start', c.running === false);
+c.start(); await sleep(300);
+ok('1.7x ticks 1.7 game-sec per real sec', near(c.gameSeconds, 0.3*1.7, 0.12), `got ${c.gameSeconds.toFixed(3)} want ~0.51`);
+c.pause(); const held = c.gameSeconds; await sleep(200);
+ok('paused clock does not advance', c.gameSeconds === held);
+c.start(); await sleep(200); c.pause();
+const beforeSpeed = c.gameSeconds;
+c.setSpeed(1.0);
+ok('speed change does not move the clock', c.gameSeconds === beforeSpeed, `${beforeSpeed.toFixed(3)}`);
+c.start(); await sleep(300); c.pause();
+ok('1.0x ticks slower than 1.7x did', near(c.gameSeconds - beforeSpeed, 0.3, 0.12), `delta ${(c.gameSeconds-beforeSpeed).toFixed(3)}`);
+c.seek(400);
+ok('seek sets game time', c.gameSeconds === 400);
+c.reset();
+ok('reset returns to 0', c.gameSeconds === 0 && !c.running);
+
+// speed change mid-run must also not jump
+const c2 = new GameClock(1.0); c2.start(); await sleep(200);
+const pre = c2.gameSeconds; c2.setSpeed(1.7); const post = c2.gameSeconds;
+ok('mid-run speed change is continuous', Math.abs(post - pre) < 0.05, `${pre.toFixed(3)} -> ${post.toFixed(3)}`);
+c2.pause();
+
+// --- pure helpers --------------------------------------------------------
+ok('formatClock pads seconds', formatClock(400) === '6:40', formatClock(400));
+ok('formatClock 9:15', formatClock(555) === '9:15', formatClock(555));
+ok('parseClock roundtrip', parseClock('9:15') === 555);
+ok('parseClock rejects junk', (() => { try { parseClock('9:99'); return false; } catch { return true; } })());
+ok('villagersAt(0) = 3', villagersAt(0) === 3);
+ok('villagersAt(275) = 14', villagersAt(275) === 14);
+ok('villagersAt(400) = 19', villagersAt(400) === 19);
+ok('drift behind', formatDrift(14) === '14s behind', formatDrift(14));
+ok('drift ahead', formatDrift(-30) === '30s ahead', formatDrift(-30));
+ok('drift on time', formatDrift(1) === 'on time');
+ok('drift over a minute', formatDrift(95) === '1m 35s behind', formatDrift(95));
+
+// --- build + timeline ----------------------------------------------------
+const b = await loadBuild('drush-into-scouts');
+ok('28 steps loaded', b.steps.length === 28, `${b.steps.length}`);
+ok('build ends 9:15', formatClock(b.duration) === '9:15', formatClock(b.duration));
+ok('first step at 0:00 with 3 vills', b.steps[0].time === 0 && b.steps[0].vills === 3);
+ok('first step label is a range', b.steps[0].label === 'Villagers 1–3', b.steps[0].label);
+const clickUp = b.steps.find(s => s.build === 'Click up');
+ok('click up at 6:45 with 19 vills', formatClock(clickUp.time) === '6:45' && clickUp.vills === 19, `${formatClock(clickUp.time)} / ${clickUp.vills}`);
+const feudal = b.steps.find(s => s.build === 'Loom');
+ok('feudal 130s after click up', feudal.time - clickUp.time === 130, `${feudal.time - clickUp.time}s`);
+ok('every alloc sums to its vill count', b.steps.every(s => Object.values(s.alloc).reduce((a,x)=>a+x,0) === s.vills));
+ok('timeline is monotonic', b.steps.every((s,i) => i===0 || s.time >= b.steps[i-1].time));
+ok('stepIndexAt(0) = 0', stepIndexAt(b.steps, 0) === 0);
+ok('stepIndexAt before a step does not include it', b.steps[stepIndexAt(b.steps, 274)].time <= 274);
+ok('stepIndexAt(275) lands on the Barracks', b.steps[stepIndexAt(b.steps, 275)].build === 'Barracks');
+ok('stepIndexAt past the end clamps', stepIndexAt(b.steps, 99999) === b.steps.length - 1);
+
+// a bad build must be rejected, not silently rendered
+const { prepareBuild } = await import('./js/data.js');
+ok('rejects bad allocation', (() => { try {
+  prepareBuild({ id:'x', steps:[{ vill:4, action:'a', alloc:{food:99} }] }); return false;
+} catch(e) { return /allocation totals 99/.test(e.message); } })());
+ok('rejects backwards timeline', (() => { try {
+  prepareBuild({ id:'x', steps:[{ time:'5:00', vills:1, action:'a', alloc:{food:1} },{ time:'1:00', vills:1, action:'b', alloc:{food:1} }] }); return false;
+} catch(e) { return /backwards in time/.test(e.message); } })());
+
+lines.push('', fails === 0 ? `ALL ${lines.filter(l=>l.startsWith('PASS')).length} CHECKS PASSED` : `${fails} FAILURES`);
+document.getElementById('out').textContent = lines.join('\n');
+</script></body></html>
