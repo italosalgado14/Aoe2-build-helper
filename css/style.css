@@ -150,21 +150,26 @@ a:hover { text-decoration: underline; }
 .now-alloc .chip { padding: 7px 14px; font-size: 1.05rem; }
 .now-alloc .chip-value { font-size: 1.25rem; }
 
-.prev { margin-bottom: 14px; }
+.prev { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .prev-inner { display: flex; align-items: baseline; gap: 12px; padding: 11px 18px; border: 1px solid var(--line-soft); border-radius: 12px; color: var(--text-faint); }
 .prev-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--text-faint); }
 .prev-time { font-family: var(--mono); font-size: 0.9rem; }
 .prev-action { flex: 1; }
 .prev-build, .next-build { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; border: 1px solid var(--line); border-radius: 4px; padding: 1px 7px; white-space: nowrap; }
 .prev-inner.empty { justify-content: center; opacity: 0.45; font-size: 0.85rem; }
+.prev-inner.older { opacity: 0.5; font-size: 0.9rem; padding: 8px 18px; }
 
-.next { margin-top: 16px; }
+.next { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
 .next-inner { display: flex; align-items: baseline; gap: 12px; padding: 14px 18px; background: var(--bg-raised); border: 1px dashed var(--line); border-radius: 12px; color: var(--text-dim); }
 .next-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--text-faint); }
 .next-time { font-family: var(--mono); color: var(--accent); font-size: 0.9rem; }
 .next-build { color: var(--accent); }
 .next-action { flex: 1; }
 .next-inner.done { color: var(--wood); border-style: solid; }
+.next-inner.later { opacity: 0.62; font-size: 0.92rem; padding: 11px 18px; }
+/* Empty slot at the start and end of a build: holds its height so the
+   now-card never moves. */
+.prev-inner.spacer, .next-inner.spacer { visibility: hidden; }
 
 .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .hint { margin-top: 18px; color: var(--text-faint); font-size: 0.8rem; max-width: 70ch; }

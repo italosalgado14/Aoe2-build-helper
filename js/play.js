@@ -154,13 +154,31 @@ try {
     listEl.scrollTop = listEl.scrollTop + delta - listEl.clientHeight / 2 + item.offsetHeight / 2;
   }
 
+  // One row above or below the now-card. Two slots per side: the step you have
+  // just finished plus the one before it, the step you are about to start plus
+  // the one after. A missing step still renders, as a hidden spacer, so the
+  // now-card sits at the same height on screen from 0:00 to the last step —
+  // it is glanced at mid-game, not read.
+  function sideRow(step, kind, tag, { modifier = '', fallback = null } = {}) {
+    if (!step) {
+      return fallback
+        ? el('div', { class: `${kind}-inner ${fallback.class}`, text: fallback.text })
+        : el('div', { class: `${kind}-inner spacer`, text: '\u00a0' });
+    }
+    return el('div', { class: `${kind}-inner ${modifier}` },
+      el('span', { class: `${kind}-tag`, text: tag }),
+      el('span', { class: `${kind}-time`, text: formatClock(step.time) }),
+      el('span', { class: `${kind}-action`, text: step.action }),
+      step.build ? el('span', { class: `${kind}-build`, text: step.build }) : null,
+    );
+  }
+
   let lastRendered = -1;
   function render() {
     const gameSeconds = clock.gameSeconds;
     const index = currentIndex(); // also hands control back if the clock caught up
     const current = steps[index];
     const next = steps[index + 1];
-    const previous = steps[index - 1];
 
     clockEl.textContent = formatClock(gameSeconds);
     clockEl.classList.toggle('paused', !clock.running);
@@ -196,22 +214,14 @@ try {
       stepNoteEl.hidden = !current.note;
       allocEl.replaceChildren(allocChips(current.alloc));
       prevEl.replaceChildren(
-        previous
-          ? el('div', { class: 'prev-inner' },
-              el('span', { class: 'prev-tag', text: 'Done' }),
-              el('span', { class: 'prev-time', text: formatClock(previous.time) }),
-              el('span', { class: 'prev-action', text: previous.action }),
-              previous.build ? el('span', { class: 'prev-build', text: previous.build }) : null)
-          : el('div', { class: 'prev-inner empty', text: 'Start of the build' }),
+        sideRow(steps[index - 2], 'prev', 'Done', { modifier: 'older' }),
+        sideRow(steps[index - 1], 'prev', 'Done',
+          { fallback: { class: 'empty', text: 'Start of the build' } }),
       );
       nextEl.replaceChildren(
-        next
-          ? el('div', { class: 'next-inner' },
-              el('span', { class: 'next-tag', text: 'Next' }),
-              el('span', { class: 'next-time', text: formatClock(next.time) }),
-              el('span', { class: 'next-action', text: next.action }),
-              next.build ? el('span', { class: 'next-build', text: next.build }) : null)
-          : el('div', { class: 'next-inner done', text: `Build complete — ${PHASES[current.phase]?.label || 'done'} reached.` }),
+        sideRow(next, 'next', 'Next',
+          { fallback: { class: 'done', text: `Build complete — ${PHASES[current.phase]?.label || 'done'} reached.` } }),
+        sideRow(steps[index + 2], 'next', 'Then', { modifier: 'later' }),
       );
       for (const item of listEl.children) {
         const i = Number(item.dataset.index);
